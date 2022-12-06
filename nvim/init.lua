@@ -27,7 +27,7 @@ local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
     use 'tpope/vim-fugitive' -- Git commands in nvim
-	use 'savq/melange'
+	  use 'savq/melange'
     use 'phha/zenburn.nvim'
     use 'morhetz/gruvbox'
     use 'd11wtq/subatomic256.vim'
