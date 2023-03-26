@@ -15,6 +15,8 @@ end
 vim.cmd [[set t_8f=\e[38;2;%lu;%lu;%lum]]
 vim.cmd [[set t_8b=\e[48;2;%lu;%lu;%lum]]
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.api.nvim_exec([[
   augroup Packer
@@ -30,7 +32,10 @@ require('packer').startup(function()
 	  use 'savq/melange'
     use 'phha/zenburn.nvim'
     use 'morhetz/gruvbox'
+    use 'ziglang/zig.vim'
     use 'd11wtq/subatomic256.vim'
+    use 'nvim-tree/nvim-tree.lua'
+    use 'nvim-tree/nvim-web-devicons'
     use 'folke/tokyonight.nvim'
     use 'denismaxim0v/minsolarized.nvim'
     use 'tjdevries/colorbuddy.vim'
@@ -130,7 +135,8 @@ vim.opt.clipboard = unnamedplus
 
 vim.o.showtabline=2
 
-require('colorbuddy').colorscheme('gruvbuddy')
+vim.o.background = "dark" 
+vim.cmd([[colorscheme catppuccin-macchiato]])
 
 --- AUTO CLOSE PAIRS
 require('nvim-autopairs').setup{}
@@ -409,6 +415,7 @@ nvim_lsp.rust_analyzer.setup(config)
 nvim_lsp.pyright.setup(config)
 nvim_lsp.tsserver.setup(config)
 nvim_lsp.gopls.setup(config)
+nvim_lsp.zls.setup(config)
 
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
@@ -462,3 +469,14 @@ cmp.setup {
         name = 'luasnip'
     }}
 }
+
+-- nvim-tree
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
