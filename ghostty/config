@@ -1,0 +1,8 @@
+theme = "Gruvbox Dark"
+
+font-family = "MartianMonoVF"
+font-size = 10
+
+adjust-cell-height = "+10%"
+
+copy-on-select = false
